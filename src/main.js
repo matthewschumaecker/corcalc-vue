@@ -3,22 +3,21 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import AVACalculator from './components/AVACalculator.vue';
 import AboutComponent from './components/AboutComponent.vue';
+import FickCalculator from './components/FickCalculator.vue';
+import EchoPAPressure from './components/EchoPAPressure.vue';
+import EchoMitralPISA from './components/EchoMitralPISA.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
-// Import other components as needed
-// import Home from './components/Home.vue'
-// import About from './components/About.vue'
-// import Contact from './components/Contact.vue'
 
 // Create router instance
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/AVA', component: AVACalculator },
-    { path: '/about', component: AboutComponent }
-    // Add other routes as needed
-    //{ path: '/page2', component: Page2 }
-    // { path: '/contact', component: Contact },
+    { path: '/about', component: AboutComponent },
+    { path: '/fick', component: FickCalculator },
+    { path: '/echoPAPressure', component: EchoPAPressure },
+    { path: '/echoMitralPISA', component: EchoMitralPISA }
   ]
 });
 

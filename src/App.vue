@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .app-container {
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ export default {
 }
 
 .main-content {
-  margin-left: 150px;
+  margin-left: 200px;
   padding: 30px;
 }
 </style>

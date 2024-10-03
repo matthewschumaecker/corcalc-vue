@@ -25,9 +25,12 @@ const route = useRoute();
 const isResponsive = ref(false);
 
 const navItems = reactive([
-  { name: 'About', route: '/about' },
-  { name: 'AVA', route: '/ava' },
-  { name: 'Dummy', route: '/pht' }
+  { name: 'Echo AVA/DI', route: '/ava' },
+  { name: 'Echo Mitral PISA', route: '/echoMitralPISA' },
+  { name: 'Echo SV/CO', route: '/co' },
+  { name: 'Echo PA Pressure', route: '/echoPAPressure' },
+  { name: '----------------', route: '----_' },
+  { name: 'Fick Calculator', route: '/fick' }
 ]);
 
 const navigate = (path) => {
@@ -42,7 +45,7 @@ const toggleNav = () => {
 <style scoped>
 nav {
   position: fixed;
-  width: 150px;
+  width: 200px;
   height: 100%;
   background-color: #d2d2d2;
   padding: 20px 10px;
