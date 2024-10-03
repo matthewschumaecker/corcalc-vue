@@ -1,0 +1,40 @@
+<template>
+  <div id="app">
+    <HeaderComponent />
+    <NavbarComponent />
+    <main class="content col-md-8">
+      <!-- Your mainp  content goes here -->
+      <router-view></router-view>
+    </main>
+  </div>
+</template>
+
+<script>
+import HeaderComponent from './components/HeaderComponent.vue';
+import NavbarComponent from './components/NavbarComponent.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HeaderComponent,
+    NavbarComponent
+  }
+};
+</script>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-left: 200px; /* To account for the navbar width */
+  padding: 20px;
+}
+</style>
