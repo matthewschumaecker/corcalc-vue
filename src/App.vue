@@ -1,14 +1,16 @@
 <template>
   <div class="app-container">
-    <HeaderComponent />
-    <div class="content-wrapper">
-      <div class="navbar">
-        <NavbarComponent />
-      </div>
-      <main class="main-content">
-        <router-view></router-view>
-      </main>
+    <header>
+      <HeaderComponent />
+    </header>
+
+    <div class="navbar-container">
+      <NavbarComponent />
     </div>
+
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
@@ -29,16 +31,22 @@ export default {
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
-
-.content-wrapper {
-  display: flex;
+header {
+  width: 100%;
+}
+.navbar-container {
   flex: 1;
+  width: 180px;
+  margin-top: 100px;
+  background-color: #ccc;
+  height: 100vh;
+  position: fixed;
 }
-
-.main-content {
+main {
   margin-left: 200px;
-  padding: 30px;
+  margin-top: 20px;
+  padding: 20px;
 }
 </style>

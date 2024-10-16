@@ -44,14 +44,9 @@ const toggleNav = () => {
 
 <style scoped>
 nav {
-  position: fixed;
-  width: 200px;
-  height: 100%;
+  margin-top: 20px;
   background-color: #d2d2d2;
   padding: 20px 10px;
-  margin-top: 100px;
-  overflow-y: auto;
-  transition: all 0.3s ease;
 }
 
 ul {
@@ -91,39 +86,5 @@ a.active {
   top: 110px;
   left: 10px;
   z-index: 1000;
-}
-
-@media screen and (max-width: 768px) {
-  nav {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-    transform: translateY(-100%);
-    position: fixed;
-    top: 100px;
-    left: 0;
-    z-index: 999;
-  }
-
-  nav.responsive {
-    transform: translateY(0);
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-  }
-
-  li {
-    margin-bottom: 5px;
-  }
-
-  a {
-    text-align: center;
-  }
 }
 </style>

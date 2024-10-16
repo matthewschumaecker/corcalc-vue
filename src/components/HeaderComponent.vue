@@ -15,10 +15,13 @@ export default {
 </script>
 <style scoped>
 .header {
+  /* position: fixed; */
   background-color: #333;
   padding: 20px;
   text-align: left;
   height: 100px;
+  position: fixed;
+  width: 100%;
 }
 .header h1 {
   font-family: 'Orbitron', sans-serif;

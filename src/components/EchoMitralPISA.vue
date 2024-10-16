@@ -1,6 +1,6 @@
 <template>
-  <div class="container mt-4" id="PISASection">
-    <h2>MITRAL EROA by PISA</h2>
+  <div class="main-content">
+    <h2>Mitral EROA by PISA</h2>
     <br />
 
     <form id="PISAForm" class="form">
@@ -79,9 +79,8 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 600px;
-  margin: 0 auto;
+.main-content {
+  margin-top: 100px;
 }
 .form-control-lg {
   font-size: 1.25rem;

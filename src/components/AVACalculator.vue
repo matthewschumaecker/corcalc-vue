@@ -1,6 +1,7 @@
 <template>
   <div class="calculator">
     <h3 class="calculator-title">AVA/DI Calculator</h3>
+    <br /><br />
     <div class="form-group">
       <label for="lvotVTI">LVOT VTI (cm):</label>
       <input type="number" id="lvotVTI" v-model="lvotVTI" step="0.01" />
@@ -73,7 +74,7 @@ export default {
 <style scoped>
 .calculator {
   max-width: 300px;
-
+  margin-top: 100px;
   font-family: Arial, sans-serif;
 }
 

@@ -94,7 +94,7 @@ export default {
         (hemoglobin.value *
           13.4 *
           (arterialOxygenContent.value / 100 - venousOxygenContent.value / 100))
-      ).toFixed()
+      ).toFixed(1)
     );
 
     const cardiacIndex = computed(() =>
