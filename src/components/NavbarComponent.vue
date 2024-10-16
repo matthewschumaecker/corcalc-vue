@@ -29,7 +29,7 @@ const navItems = reactive([
   { name: 'Echo Mitral PISA', route: '/echoMitralPISA' },
   { name: 'Echo SV/CO', route: '/co' },
   { name: 'Echo PA Pressure', route: '/echoPAPressure' },
-  { name: '----------------', route: '----_' },
+  { name: '----------------' },
   { name: 'Fick Calculator', route: '/fick' }
 ]);
 

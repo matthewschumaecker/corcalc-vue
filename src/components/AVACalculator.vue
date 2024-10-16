@@ -1,14 +1,21 @@
 <template>
   <div class="calculator">
-    <h3 class="calculator-title">AVA/DI Calculator</h3>
+    <h2 class="calculator-title"><u>AVA/DI Calculator</u></h2>
     <br /><br />
     <div class="form-group">
-      <label for="lvotVTI">LVOT VTI (cm):</label>
-      <input type="number" id="lvotVTI" v-model="lvotVTI" step="0.01" />
+      <label class="form-label" for="lvotVTI">LVOT VTI (cm):</label>
+      <input
+        class="form-control form-control-lg"
+        type="number"
+        id="lvotVTI"
+        v-model="lvotVTI"
+        step="0.01"
+      />
     </div>
     <div class="form-group">
       <label for="lvotDiameter">LVOT Diameter (cm):</label>
       <input
+        class="form-control form-control-lg"
         type="number"
         id="lvotDiameter"
         v-model="lvotDiameter"
@@ -17,10 +24,20 @@
     </div>
     <div class="form-group">
       <label for="avVTI">AV VTI (cm):</label>
-      <input type="number" id="avVTI" v-model="avVTI" step="0.01" />
+      <input
+        class="form-control form-control-lg"
+        type="number"
+        id="avVTI"
+        v-model="avVTI"
+        step="0.01"
+      />
+
+      <div class="result">
+        <h4>Results:</h4>
+        <p>AVA: {{ result.ava }} L/min</p>
+        <p>DI: {{ result.di }}L/min/m²</p>
+      </div>
     </div>
-    <p class="result">AVA: {{ result.ava }} cm sq</p>
-    <p class="result">DI: {{ result.di }}</p>
   </div>
 </template>
 
@@ -71,39 +88,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.calculator {
-  max-width: 300px;
-  margin-top: 100px;
-  font-family: Arial, sans-serif;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-label {
-  flex: 1;
-  margin-right: 10px;
-  color: #666;
-}
-
-input {
-  width: 80px;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  text-align: right;
-}
-
-.result {
-  margin-top: 20px;
-  font-weight: bold;
-  text-align: left;
-  color: #4a4a4a;
-}
-</style>
+<style scoped></style>

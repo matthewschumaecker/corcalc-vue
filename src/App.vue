@@ -3,11 +3,9 @@
     <header>
       <HeaderComponent />
     </header>
-
     <div class="navbar-container">
       <NavbarComponent />
     </div>
-
     <main>
       <router-view></router-view>
     </main>
@@ -40,13 +38,13 @@ header {
   flex: 1;
   width: 180px;
   margin-top: 100px;
-  background-color: #ccc;
+  background-color: #d2d2d2;
   height: 100vh;
   position: fixed;
 }
 main {
   margin-left: 200px;
-  margin-top: 20px;
+  margin-top: 105px;
   padding: 20px;
 }
 </style>

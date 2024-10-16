@@ -1,25 +1,24 @@
 <template>
   <div>
-    <h2>Cardiac Output</h2>
-    <h4>Fick Equation</h4>
-    <br />
+    <h2><u>Cardiac Output by Fick Equation</u></h2>
+
     <form id="fick-form" onsubmit="return false;">
-      <div class>
+      <div class="form-group">
         <label for="hemoglobin">Hemoglobin (g/dL):</label>
         <input
           type="number"
-          class="form-control form-control-lg w-50"
+          class="form-control form-control-lg"
           v-model="hemoglobin"
           step="0.1"
           size="8"
         />
-        <br />
       </div>
-      <div>
+
+      <div class="form-group">
         <label for="arterial-saturation">Arterial O2 Saturation (%):</label>
         <input
           type="number"
-          class="form-control form-control-lg w-50"
+          class="form-control form-control-lg"
           v-model="arterialOxygenContent"
           step="1"
           min="0"
@@ -27,14 +26,12 @@
           placeholder="100"
         />
       </div>
-      <br />
-      <div>
-        <label for="venous-saturation"
-          ><strong>Venous O2 Saturation (%):</strong></label
-        >
+
+      <div class="form-group">
+        <label for="venous-saturation">Venous O2 Saturation (%):</label>
         <input
           type="number"
-          class="form-control form-control-lg w-50"
+          class="form-control form-control-lg"
           v-model="venousOxygenContent"
           step="1"
           min="0"
@@ -42,33 +39,33 @@
           required
         />
       </div>
-      <br />
-      <div>
+
+      <div class="form-group">
         <label for="vo2">VO2 (mL/min):</label>
         <input
           type="number"
           v-model="vo2"
-          class="form-control form-control-lg w-75"
+          class="form-control form-control-lg"
           placeholder="Default: 125 * BSA"
         />
-        <button @click="computeVO2">125 x BSA</button>
+        <button id="vo2Button" @click="computeVO2">125 x BSA</button>
       </div>
-      <br />
+
       <div class="form-group">
         <label for="bsa">Body Surface Area (m²):</label>
         <input
           type="number"
           v-model="bsa"
-          class="form-control form-control-lg w-75"
-          step="0.01"
+          class="form-control form-control-lg"
+          step="0.1"
           placeholder="Default: 2"
         />
-        <br />
       </div>
     </form>
-    <br /><br />
-    <div id="result">
-      <h3>Results:</h3>
+    <br />
+    <div class="result">
+      <h4>Result:</h4>
+      <br />
       <p>Cardiac Output: {{ cardiacOutput }} L/min</p>
       <p>Cardiac Index: {{ cardiacIndex }}L/min/m²</p>
     </div>
@@ -120,44 +117,10 @@ export default {
 </script>
 
 <style scoped>
-.calculator {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.calculator h2 {
-  text-align: center;
-}
-.calculator form {
-  display: flex;
-  flex-direction: column;
-}
-.calculator form div {
-  margin-bottom: 1em;
-}
-.calculator form label {
-  margin-bottom: 0.5em;
-  font-weight: bold;
-}
-.calculator form input {
-  padding: 0.5em;
-  font-size: 1em;
-}
-.calculator button {
-  padding: 0.5em;
-  font-size: 1em;
-  cursor: pointer;
-}
-.calculator h3 {
-  text-align: center;
-  margin-top: 1em;
-}
-.form-control-lg::placeholder {
-  font-size: 0.8rem;
-}
-button {
-  margin-top: 10px;
+#vo2Button {
+  margin-top: 8px;
+  margin-left: 5px;
+  border-radius: 8px;
+  color: rgb(89, 86, 86);
 }
 </style>

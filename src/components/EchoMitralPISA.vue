@@ -1,44 +1,58 @@
 <template>
   <div class="main-content">
-    <h2>Mitral EROA by PISA</h2>
-    <br />
+    <h2><u>Mitral EROA by PISA</u></h2>
+    <br /><br />
 
-    <form id="PISAForm" class="form">
-      <div>
-        <label>MR Radius (mm):</label>
-        <input
-          type="number"
-          class="form-control form-control-lg w-25"
-          v-model="MRradius"
-          step="1"
-        />
-      </div>
-      <br />
-      <div>
-        <label>Aliasing Velocity (cm/s):</label>
-        <input
-          type="number"
-          class="form-control form-control-lg w-25"
-          v-model="aliasingVelocity"
-          step="any"
-        />
-      </div>
-      <br />
+    <form id="PISAForm" class="calculator">
       <div class="form-group">
-        <label>MR VTI (cm):</label>
+        <label for="mrRadius">MR Radius (cm):</label>
         <input
+          id="mrRadius"
+          class="form-control form-control-lg"
           type="number"
-          class="form-control form-control-lg w-25"
-          v-model="mrVti"
-          step="any"
+          v-model="MRradius"
+          step="0.1"
         />
       </div>
-      <br />
-      <div>
-        <h3>Results:</h3>
-        <p>
-          EROA: <span id="eroaResult">{{ EROA }}</span> mm<sup>2</sup>
-        </p>
+
+      <div class="form-group">
+        <label for="aliasingVelocity">Aliasing Velocity (cm/sec):</label>
+        <input
+          id="aliasingVelocity"
+          class="form-control form-control-lg"
+          type="number"
+          v-model="aliasingVelocity"
+          step="0.1"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="mrVmax">MR Vmax (m/sec):</label>
+        <input
+          id="mrVmax"
+          class="form-control form-control-lg"
+          type="number"
+          v-model="mrVmax"
+          step="0.1"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="mrVti">MR VTI (cm):</label>
+        <input
+          id="mrVti"
+          class="form-control form-control-lg"
+          type="number"
+          v-model="mrVti"
+          step="0.1"
+        />
+      </div>
+
+      <div class="result">
+        <h4>Results:</h4>
+        <p>EROA: {{ result.EROA }} mm<sup>2</sup></p>
+        <p>VFR: {{ result.VFR }} mL/sec</p>
+        <p>RVol: {{ result.RVOL }} mL/beat</p>
       </div>
     </form>
   </div>
@@ -50,39 +64,60 @@ import { ref, computed } from 'vue';
 export default {
   name: 'PISACalculator',
   setup() {
-    // Reactive inputs
-    const MRradius = ref(null); // MR radius in mm
-    const aliasingVelocity = ref(null); // Aliasing velocity in cm/s
-    const mrVti = ref(null); // MR VTI in cm
+    const MRradius = ref(null);
+    const aliasingVelocity = ref(null);
+    const mrVti = ref(null);
+    const mrVmax = ref(null);
 
-    // Computed EROA
-    const EROA = computed(() => {
-      if (MRradius.value && aliasingVelocity.value && mrVti.value) {
-        // Use the PISA formula: EROA = (2 * π * radius^2 * aliasingVelocity) / mrVti
-        const radiusInCm = MRradius.value / 10; // Convert radius from mm to cm
-        const pisaFlow =
-          2 * Math.PI * Math.pow(radiusInCm, 2) * aliasingVelocity.value; // Flow in mL/s
-        const eroa = pisaFlow / mrVti.value; // EROA in cm²
-        return (eroa * 100).toFixed(2); // Convert to mm²
+    const result = computed(() => {
+      const r = Number(MRradius.value);
+      const Va = Number(aliasingVelocity.value);
+      const VTI = Number(mrVti.value);
+      const Vmax = Number(mrVmax.value);
+
+      if (r > 0 && Va > 0 && Vmax > 0) {
+        const VFR = 2 * Math.PI * Math.pow(r, 2) * Va;
+        const EROA = VFR / Vmax;
+
+        if (VTI > 0) {
+          const RVOL = EROA * VTI;
+          return {
+            VFR: VFR.toFixed(1),
+            RVOL: RVOL.toFixed(1),
+            EROA: EROA.toFixed(1)
+          };
+        } else {
+          return {
+            VFR: VFR.toFixed(1),
+            RVOL: '--',
+            EROA: EROA.toFixed(1)
+          };
+        }
+      } else {
+        return {
+          VFR: '--',
+          RVOL: '--',
+          EROA: '--'
+        };
       }
-      return '--';
     });
 
     return {
       MRradius,
       aliasingVelocity,
       mrVti,
-      EROA
+      mrVmax,
+      result
     };
   }
 };
 </script>
 
 <style scoped>
-.main-content {
-  margin-top: 100px;
+.form-group {
+  margin-bottom: 1rem;
 }
-.form-control-lg {
-  font-size: 1.25rem;
+.result {
+  margin-top: 2rem;
 }
 </style>
